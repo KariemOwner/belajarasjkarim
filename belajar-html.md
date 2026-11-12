@@ -1,27 +1,28 @@
-# 📚 Belajar HTML dari Website Perkenalan
+# Catatan belajar: index.html
 
-Dokumen ini adalah **file pembelajaran terpisah** yang menjelaskan setiap
-bagian kode pada `index.html`. Cocok dibaca sambil membuka file-nya.
+Dokumen ini menjelaskan isi `index.html`, `css/style.css`, dan `js/script.js`.
+Baca sambil membuka file-nya. Setiap contoh di bawah benar-benar ada di kode,
+bukan teori umum.
 
-## 🗂️ Struktur Folder Proyek
+## Berkas proyek
 
 ```
-belajar-html/
-├── index.html        ← Halaman utama (struktur HTML)
-├── css/
-│   └── style.css     ← Gaya/tampilan halaman (CSS)
-├── js/
-│   └── script.js     ← Interaksi halaman (JavaScript)
-├── belajar-html.md   ← File penjelasan ini
-└── README.md
+index.html        struktur halaman
+css/style.css     tampilan
+js/script.js      dua perilaku kecil
+belajar-html.md   catatan ini
 ```
 
-> **Cara membuka:** double-click `index.html`, atau jalankan server lokal:
-> `python3 -m http.server 8000` lalu buka `http://localhost:8000`.
+Jalankan dengan server lokal (bukan double-click, supaya semua path aman):
+
+```
+python3 -m http.server 8000
+# buka http://localhost:8000
+```
 
 ---
 
-## 1. Kerangka Dasar HTML
+## 1. Baris pertama dan kerangka
 
 ```html
 <!DOCTYPE html>
@@ -31,141 +32,206 @@ belajar-html/
 </html>
 ```
 
-| Bagian | Penjelasan |
-|---|---|
-| `<!DOCTYPE html>` | Memberi tahu browser bahwa ini dokumen HTML5. |
-| `<html lang="id">` | Elemen root; `lang="id"` menandakan bahasa Indonesia. |
-| `<head>` | Berisi informasi *tentang* halaman (tidak ditampilkan langsung). |
-| `<body>` | Berisi konten yang *ditampilkan* di layar. |
+`<!DOCTYPE html>` wajib jadi baris pertama; tanpanya browser masuk ke
+"quirks mode" dan CSS berperilaku aneh. `lang="id"` memberi tahu pembaca
+layar cara melafalkan teks dan memberi tahu penerjemah bahasa sumbernya.
 
 ## 2. Isi `<head>`
 
 ```html
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perkenalan Diri - Belajar HTML</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Halaman perkenalan Asykarim ...">
+<title>Muhammad Asykarim — Perkenalan</title>
 <link rel="stylesheet" href="css/style.css">
 ```
 
-- **`charset="UTF-8"`** → mendukung semua huruf & emoji (👋).
-- **`viewport`** → agar tampilan pas di layar HP (responsif).
-- **`<title>`** → teks pada tab browser.
-- **`<link rel="stylesheet">`** → menghubungkan ke file CSS **terpisah**.
+| Baris | Fungsi praktis |
+|---|---|
+| `charset` | Tanpa ini, huruf seperti `—` atau `é` tampil rusak. Harus paling awal. |
+| `viewport` | Tanpa ini, HP menampilkan halaman "dari jauh" lalu user harus zoom. |
+| `description` | Teks yang muncul di hasil Google. Tidak memengaruhi tampilan. |
+| `title` | Judul di tab browser, bukan di layar. |
+| `link` | Mengambil berkas CSS dari folder lain. Path relatif terhadap HTML. |
 
-## 3. Judul & Paragraf
+## 3. Elemen semantik pengganti `<div>` semaunya
+
+Halaman lama biasanya penuh `<div class="header">`, `<div class="menu">`.
+Versi ini memakai elemen yang memang punya arti:
+
+| Elemen | Dipakai di sini untuk | Kenapa bukan div |
+|---|---|---|
+| `<header>` | Baris nama + menu di atas | Penanda "kepala dokumen" bagi mesin |
+| `<nav>` | Daftar tautan bagian | Pembaca layar bisa lompat langsung ke navigasi |
+| `<main>` | Seluruh konten inti | Hanya boleh satu per halaman; penanda "isi sebenarnya" |
+| `<section>` | Tentang, Keahlian, Projek, Kontak | Bagian dengan judul sendiri |
+| `<article>` | Tiap kartu projek | Konten yang masih masuk akal kalau dipindah ke halaman lain |
+| `<footer>` | Garis bawah halaman | Penanda akhir dokumen |
+
+Aturan praktis: kalau isinya bisa diberi judul `<h2>`, pakai `<section>`;
+kalau isinya berdiri sendiri dan bisa dikutip, pakai `<article>`.
+
+## 4. Navigasi jangkar (`href="#tentang"`)
 
 ```html
-<h1>Halo! Saya Asykarim 👋</h1>      <!-- judul terbesar, pakai SATU per halaman -->
-<h2>Tentang Saya</h2>               <!-- sub-judul -->
-<p>Nama lengkap saya <strong>Muhammad Asykarim</strong>.</p>
+<a href="#keahlian">Keahlian</a>
+...
+<section id="keahlian">
 ```
 
-- `<h1>`–`<h6>`: tingkatan judul (h1 paling penting).
-- `<p>`: paragraf.
-- `<strong>`: teks **penting** (tebal + arti semantik).
-- `<em>`: teks *penekanan* (miring).
+Tautan dengan `#` tidak memuat halaman ulang — browser hanya menggulir ke
+elemen yang `id`-nya sama. Karena itu setiap `id` di halaman ini unik.
+Gulir halus datang dari CSS `scroll-behavior: smooth`, bukan JavaScript.
 
-## 4. Daftar (List)
+## 5. `<abbr title="...">`
 
 ```html
-<ul>                     <!-- unordered list = daftar tidak berurut -->
-    <li>Membaca buku</li>
-    <li>Olahraga</li>
-</ul>
-
-<ol>                    <!-- ordered list = daftar bernomor 1,2,3 -->
-    <li>Langkah pertama</li>
-</ol>
+Siswa <abbr title="Rekayasa Perangkat Lunak">RPL</abbr>
 ```
 
-## 5. Tabel
+Saat diklik/dihover, tooltip menampilkan kepanjangan. Informasi tambahan
+tanpa menambah paragraf penjelasan.
+
+## 6. `<dl>`, `<dt>`, `<dd>` — daftar istilah
 
 ```html
-<table>
-    <tr>                <!-- table row = baris -->
-        <th>Nama</th>   <!-- table header = sel judul (tebal) -->
-        <td>Asykarim</td><!-- table data = sel isi -->
+<dl class="identitas">
+  <dt>Sekolah</dt>
+  <dd>SMK Negeri — Jurusan RPL</dd>
+</dl>
+```
+
+Dibuat persis untuk pasangan "label → nilai" seperti data diri. Dibandingkan
+`<ul>` biasa, di sini jelas mana kunci dan mana isi, baik secara visual
+(menggunakan CSS grid dua kolom) maupun bagi pembaca layar.
+
+## 7. `<table>` yang benar
+
+Tabel dipakai untuk data, bukan untuk menata letak. Di bagian Keahlian:
+
+```html
+<table class="skill">
+  <caption class="sr-only">Daftar keahlian beserta tingkat penguasaan</caption>
+  <tbody>
+    <tr>
+      <th scope="row">HTML</th>
+      <td><progress value="85" max="100">85%</progress></td>
     </tr>
+  </tbody>
 </table>
 ```
 
-## 6. Link (Anchor)
+- `<caption>` = judul tabel. `.sr-only` membuatnya tak terlihat tapi tetap
+  dibaca pembaca layar.
+- `scope="row"` = penegas bahwa sel itu nama barisnya, bukan datanya.
+- Perhatikan: tidak ada `border="1"` atribut jadul. Garis diatur lewat CSS.
+
+## 8. `<progress>` — bilah keahlian tanpa gambar
 
 ```html
-<a href="mailto:asykarim@example.com">Kirim email</a>
-<a href="https://www.w3schools.com" target="_blank">W3Schools</a>
+<progress value="85" max="100">85%</progress>
 ```
 
-Atribut `href` menentukan tujuan link; `target="_blank"` membuka di tab baru.
+Ini elemen HTML asli, bukan trik CSS. Tampilannya distyle lewat tiga
+selector pseudo di `style.css` (`::-webkit-progress-bar`,
+`::-webkit-progress-value`, `::-moz-progress-bar`) karena Chrome dan Firefox
+membutuhkannya. Angka di dalam tag (`85%`) adalah teks cadangan untuk browser
+lama. Bedakan dengan `<meter>`: progress = kemajuan menuju target,
+meter = pengukuran pada skala tetap.
 
-## 7. Elemen Semantik & Atribut
+## 9. `<time datetime="2026">`
 
 ```html
-<main class="container">   <!-- konten utama -->
-<header> ... </header>     <!-- bagian atas/judul -->
-<section> ... </section>   <!-- bagian tematik -->
-<footer> ... </footer>     <!-- bagian bawah -->
+<time datetime="2026">2026</time>
 ```
 
-- `class="..."` → nama kelompok untuk styling di CSS (`.` di CSS).
-- `<!-- ... -->` → komentar, tidak ditampilkan browser.
+Manusia membaca "2026", mesin membaca atribut `datetime` yang baku
+(`2026-05-14` juga valid). Berguna saat halaman diindeks atau dikutip situs lain.
 
-## 8. Komentar & Entity HTML
+## 10. Form kontak tanpa backend
 
 ```html
-&copy;   → ©
-&mdash;  → —
-&lt;     → <
-&gt;     → >
+<form action="mailto:asykarim@example.com" method="post" enctype="text/plain">
+  <label for="nama-form">Nama</label>
+  <input type="text" id="nama-form" name="nama" required>
+  <textarea id="pesan" name="pesan" rows="4" required></textarea>
+  <button type="submit">Kirim lewat email</button>
+</form>
 ```
 
-Entity dipakai karena beberapa karakter khusus tidak bisa ditulis langsung.
+Tiga hal yang sering salah:
 
-## 9. Menghubungkan File Terpisah
+1. `for` pada `<label>` harus sama dengan `id` input. Tanpanya, klik teks
+   label tidak memfokuskan kolom isian — masalah aksesibilitas nyata.
+2. `name` wajib ada. Data dikirim sebagai `nama=...&pesan=...`; tanpa
+   `name`, nilainya hilang.
+3. `action="mailto:..."` membuka aplikasi email, bukan mengirim ke server.
+   Untuk pengiriman sungguhan perlu backend (PHP/Formspree/GitHub Pages + API).
 
-**CSS (`css/style.css`):**
+`required` memvalidasi di browser sebelum form dikirim — nol JavaScript.
+
+## 11. Atribut aria yang dipakai
+
 ```html
-<link rel="stylesheet" href="css/style.css">
+<nav aria-label="Navigasi utama">
+<section aria-labelledby="judul-tentang">
 ```
 
-**JavaScript (`js/script.js`):**
-```html
-<script src="js/script.js"></script>  <!-- taruh sebelum </body> -->
+`aria-label` memberi nama pada elemen yang tampilannya tidak menjelaskan
+dirinya. `aria-labelledby` menunjuk ke `id` judul yang sudah ada, jadi tidak
+menulis label dua kali. Jangan tambahkan aria "biar lengkap" — atribut yang
+salah justru membuat pembaca layar bicara bertele-tele.
+
+## 12. CSS: variabel dan sistem yang kecil
+
+```css
+:root {
+  --bg: #111418;
+  --aksen: #5fb3a6;
+}
+.progress { background: var(--panel); }
 ```
 
-Kenapa terpisah? Agar kode **rapi**, mudah dirawat, dan bisa dipakai ulang
-di banyak halaman.
+Semua warna didefinisikan sekali di `:root`, dipakai ulang dengan `var()`.
+Ganti tema cukup satu blok. Halaman ini sengaja memakai: 2 keluarga huruf
+(serif untuk bacaan, monospace untuk label), 1 warna aksen, tanpa gradien,
+tanpa bayangan besar. Batasi pilihan — hasilnya lebih dewasa, bukan lebih miskin.
 
-## 10. Konsep CSS Penting di style.css
+Satuan `rem` dipakai alih-alih `px` agar teks mengikuti pengaturan ukuran
+huruf pengguna. `.wrap` (max-width + margin auto) adalah pola pembatas
+konten yang bisa dipakai di mana saja.
 
-| Properti | Fungsi |
-|---|---|
-| `background: linear-gradient(...)` | latar warna gradasi |
-| `border-radius: 16px` | sudut kartu membulat |
-| `box-shadow` | bayangan kartu |
-| `text-align: center` | rata tengah teks |
-| `padding` / `margin` | jarak dalam / jarak luar elemen |
-| `@media (max-width: 480px)` | aturan khusus untuk layar kecil |
+## 13. JavaScript: dua hal kecil, tidak lebih
 
-## 11. Konsep JavaScript di script.js
+```js
+document.getElementById("tahun").textContent = new Date().getFullYear();
+```
 
-- `document.addEventListener("DOMContentLoaded", ...)` → tunggu halaman siap.
-- `prompt(...)` → menampilkan kotak tanya ke pengguna.
-- `document.createElement("p")` → membuat elemen baru via kode.
-- `document.querySelector(".info-section")` → memilih elemen berdasarkan class.
-- `appendChild(...)` → menyisipkan anak ke dalam elemen.
+`getElementById` mengambil satu elemen berdasarkan id. `textContent`
+mengisi teks (lebih aman daripada `innerHTML` karena tidak menjalankan HTML).
 
----
+```js
+const pengamat = new IntersectionObserver((entries) => { ... },
+                        { rootMargin: "-40% 0px -55% 0px" });
+bagian.forEach((s) => pengamat.observe(s));
+```
 
-## ✏️ Latihan untuk Dicoba
+`IntersectionObserver` memberi tahu saat elemen masuk/keluar layar, tanpa
+event `scroll` yang berat. `rootMargin` memperkecil "zona aktif" sehingga
+menu baru ditandai saat bagian benar-benar di tengah bacaan. Ini alasan
+dipakainya JS: ada perilaku yang tidak bisa dilakukan HTML/CSS saja.
 
-1. Ganti nama "Asykarim" dengan namamu sendiri.
-2. Tambahkan hobi baru di dalam `<ul>`.
-3. Buat baris tabel baru, misalnya `Umur`.
-4. Ubah warna `#667eea` di `style.css` menjadi warna favoritmu.
-5. Tambahkan `<img src="foto.jpg" alt="Foto saya">` di bagian profil.
+Perbandingan dengan versi lama: `prompt()` yang muncul tiap kunjungan dan
+menyuntipkan paragraf selamat-datang sudah dihapus — mengganggu, dan
+halaman statis tidak butuh itu.
 
-## 📖 Sumber Belajar Tambahan
+## 14. Urutan belajar dari proyek ini
 
-- W3Schools HTML: https://www.w3schools.com/html/
-- MDN HTML (bahasa Inggris, sangat lengkap): https://developer.mozilla.org/docs/Web/HTML
+1. Kerjakan `index.html` sampai strukturnya terbaca di browser tanpa CSS.
+   Kalau tanpa gaya masih masuk akal, strukturnya benar.
+2. Tambahkan `style.css`: ubah satu variabel warna, lihat seluruh halaman ikut.
+3. Terakhir `script.js`: pindahkan angka tahun ke elemen lain, observer tetap jalan.
+
+Latihan: tambahkan bagian `<section id="pengalaman">` berisi satu
+`<article>` dengan `<time>`, daftarkan ke menu `<nav>`, lalu pastikan menu
+aktif ikut menandainya. Semuanya sudah ada polanya di kode — tinggal ditiru.

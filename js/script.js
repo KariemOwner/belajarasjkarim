@@ -1,36 +1,23 @@
-/* ============================================
-   script.js - File JavaScript terpisah
-   Fungsi: menambahkan interaksi sederhana
-   ============================================ */
+/* script.js — JavaScript untuk index.html
+   Hanya dua hal: tahun di footer, dan menandai tautan menu
+   yang sesuai dengan bagian yang sedang dibaca. */
 
-// Jalankan kode setelah halaman selesai dimuat
-document.addEventListener("DOMContentLoaded", function () {
+// Tahun otomatis di footer (angka 2026 di HTML hanya cadangan)
+document.getElementById("tahun").textContent = new Date().getFullYear();
 
-    // 1. Tampilkan pesan sambutan di console browser
-    //    (buka DevTools dengan F12 untuk melihatnya)
-    console.log("Halo! Selamat datang di website belajar HTML 🎉");
+// Tandai menu aktif saat halaman digulir.
+// IntersectionObserver memberi tahu saat sebuah <section> muncul di layar.
+const tautanMenu = document.querySelectorAll(".menu a");
+const bagian = document.querySelectorAll("main section[id]");
 
-    // 2. Menghitung usia pengunjung yang mengetik nama
-    //    melalui prompt (jendela tanya sederhana)
-    const nama = prompt("Selamat datang! Boleh tahu nama Anda?");
+const pengamat = new IntersectionObserver((entries) => {
+  entries.forEach((entri) => {
+    if (!entri.isIntersecting) return;
+    tautanMenu.forEach((tautan) => {
+      const aktif = tautan.getAttribute("href") === "#" + entri.target.id;
+      tautan.style.color = aktif ? "var(--aksen)" : "";
+    });
+  });
+}, { rootMargin: "-40% 0px -55% 0px" });
 
-    if (nama !== null && nama.trim() !== "") {
-        // Buat elemen <p> baru secara dinamis dengan JavaScript
-        const sapaan = document.createElement("p");
-        sapaan.textContent = "Terima kasih, " + nama.trim() +
-            "! Semoga belajar HTML-nya menyenangkan.";
-        sapaan.style.color = "#667eea";
-        sapaan.style.fontWeight = "bold";
-
-        // Sisipkan elemen tersebut ke dalam bagian info-section
-        const section = document.querySelector(".info-section");
-        section.appendChild(sapaan);
-    }
-
-    // 3. Menampilkan tahun otomatis di footer
-    const footer = document.querySelector("footer p");
-    if (footer) {
-        const tahunBaru = new Date().getFullYear();
-        footer.innerHTML = footer.innerHTML.replace("2026", tahunBaru);
-    }
-});
+bagian.forEach((s) => pengamat.observe(s));

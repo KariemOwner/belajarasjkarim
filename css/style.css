@@ -1,128 +1,207 @@
-/* ============================================
-   style.css - File CSS terpisah untuk index.html
-   Fungsi: mengatur tampilan/gaya halaman
-   ============================================ */
+/* style.css — gaya untuk index.html
+   Sistem desain sengaja minim: dua jenis huruf, satu warna aksen,
+   tanpa gradien dan tanpa bayangan tebal. */
 
-/* Reset sederhana: hilangkan margin & padding default browser */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --bg: #111418;        /* latar gelap    */
+  --panel: #1a1f26;     /* latar kartu    */
+  --teks: #d7dbe0;      /* teks utama     */
+  --kabur: #8b939e;     /* teks sekunder  */
+  --garis: #2a313a;     /* garis pemisah  */
+  --aksen: #5fb3a6;     /* satu warna aksen (hijau kebiruan) */
 }
 
-/* Gaya dasar seluruh halaman (body) */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
 body {
-    font-family: "Segoe UI", Arial, sans-serif; /* jenis huruf */
-    background: linear-gradient(135deg, #667eea, #764ba2); /* warna latar */
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+  font-family: Georgia, "Times New Roman", serif;
+  background: var(--bg);
+  color: var(--teks);
+  line-height: 1.65;
 }
 
-/* Kontainer utama berbentuk kartu putih */
-.container {
-    background-color: #ffffff;
-    max-width: 600px;
-    width: 100%;
-    border-radius: 16px;   /* sudut membulat */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* bayangan */
-    overflow: hidden;
+/* Pembatas lebar konten, dipakai ulang di header/main/footer */
+.wrap { max-width: 46rem; margin: 0 auto; padding: 0 1.25rem; }
+
+/* ---------- Header & navigasi ---------- */
+.site-header {
+  border-bottom: 1px solid var(--garis);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
 }
 
-/* Bagian header profil */
-.profile-card {
-    background-color: #667eea;
-    color: white;
-    text-align: center;       /* rata tengah teks */
-    padding: 30px 20px;
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: .9rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.profile-card h1 {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
+.brand {
+  font-weight: bold;
+  letter-spacing: .02em;
+  color: var(--teks);
+  text-decoration: none;
 }
 
-.subtitle {
-    font-size: 1rem;
-    opacity: 0.9;
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  font-family: ui-monospace, "Courier New", monospace;
+  font-size: .85rem;
 }
 
-/* Bagian isi informasi */
-.info-section {
-    padding: 25px 30px;
-}
+.menu a { color: var(--kabur); text-decoration: none; }
+.menu a:hover, .menu a:focus { color: var(--aksen); }
 
-.info-section h2 {
-    color: #667eea;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #eee; /* garis bawah judul */
-    padding-bottom: 5px;
-}
+/* ---------- Bagian intro ---------- */
+.intro { padding-block: 3rem 2.5rem; }
 
-.info-section p {
-    line-height: 1.6; /* jarak antar baris */
-    margin-bottom: 10px;
-}
+h1 { font-size: 2rem; font-weight: normal; }
 
-/* Daftar hobi */
-ul {
-    margin-left: 20px;
-    line-height: 1.8;
-}
+.tagline { color: var(--aksen); margin-bottom: 1rem; }
 
-/* Tabel data diri */
-table {
-    width: 100%;
-    border-collapse: collapse; /* gabungkan garis sel */
-    margin-top: 10px;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background-color: #f2f2f2;
-    width: 30%;
-}
-
-/* Link email */
-a {
-    color: #667eea;
-    text-decoration: none; /* hilangkan garis bawah */
-}
-
-a:hover {
-    text-decoration: underline; /* efek saat kursor di atas link */
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #f8f8f8;
-    color: #666;
-    font-size: 0.9rem;
-}
+abbr[title] { text-decoration: none; border-bottom: 1px dotted var(--kabur); }
 
 code {
-    background-color: #eee;
-    padding: 2px 6px;
-    border-radius: 4px;
+  font-family: ui-monospace, "Courier New", monospace;
+  font-size: .9em;
+  color: var(--aksen);
 }
 
-/* Media query: penyesuaian untuk layar kecil (HP) */
-@media (max-width: 480px) {
-    .profile-card h1 {
-        font-size: 1.4rem;
-    }
+/* Daftar istilah identitas: dt = istilah, dd = penjelasan */
+.identitas {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: .25rem 1rem;
+  font-size: .95rem;
+}
+.identitas dt { color: var(--kabur); }
+.identitas dd { margin: 0; }
 
-    .info-section {
-        padding: 20px;
-    }
+/* ---------- Bagian bernomor ---------- */
+.nomor {
+  border-top: 1px solid var(--garis);
+  padding-block: 2.5rem;
+}
+
+h2 {
+  font-family: ui-monospace, "Courier New", monospace;
+  font-size: .9rem;
+  font-weight: normal;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--kabur);
+  margin-bottom: 1.25rem;
+}
+
+h3 { font-size: 1.05rem; font-weight: normal; margin-bottom: .25rem; }
+
+.meta {
+  font-family: ui-monospace, "Courier New", monospace;
+  font-size: .8rem;
+  color: var(--kabur);
+  margin-bottom: .5rem;
+}
+
+/* ---------- Tabel keahlian ---------- */
+.skill { width: 100%; border-collapse: collapse; }
+
+.skill th {
+  text-align: left;
+  font-weight: normal;
+  padding: .4rem 1rem .4rem 0;
+  width: 10rem;
+}
+
+.skill td { padding: .4rem 0; }
+
+progress {
+  width: 100%;
+  height: .55rem;
+  appearance: none;
+  border: none;
+  background: var(--panel);
+}
+progress::-webkit-progress-bar    { background: var(--panel); }
+progress::-webkit-progress-value  { background: var(--aksen); }
+progress::-moz-progress-bar       { background: var(--aksen); }
+
+/* ---------- Kartu projek ---------- */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--garis);
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+/* ---------- Form kontak ---------- */
+form { display: grid; gap: .4rem; max-width: 28rem; }
+
+label {
+  font-family: ui-monospace, "Courier New", monospace;
+  font-size: .8rem;
+  color: var(--kabur);
+}
+
+input, textarea {
+  background: var(--panel);
+  border: 1px solid var(--garis);
+  color: var(--teks);
+  padding: .5rem .6rem;
+  font: inherit;
+}
+
+input:focus, textarea:focus {
+  outline: 2px solid var(--aksen);
+  outline-offset: 1px;
+}
+
+button {
+  margin-top: .5rem;
+  justify-self: start;
+  background: none;
+  border: 1px solid var(--aksen);
+  color: var(--aksen);
+  padding: .5rem 1rem;
+  font: inherit;
+  cursor: pointer;
+}
+button:hover { background: var(--aksen); color: var(--bg); }
+
+.catatan { margin-top: 1rem; font-size: .9rem; color: var(--kabur); }
+
+a { color: var(--aksen); }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--garis);
+  font-size: .85rem;
+  color: var(--kabur);
+}
+.site-footer .bar { padding-block: 1.25rem; }
+.site-footer a { color: var(--kabur); text-decoration: none; }
+.site-footer a:hover { color: var(--aksen); }
+
+/* Utilitas: teks yang hanya dibaca screen reader */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Layar kecil: judul diperkecil, identitas jadi satu kolom */
+@media (max-width: 36rem) {
+  h1 { font-size: 1.5rem; }
+  .identitas { grid-template-columns: 1fr; gap: 0; }
+  .identitas dd { margin-bottom: .5rem; }
 }
