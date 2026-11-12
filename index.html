@@ -2,79 +2,128 @@
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8">
-    <!-- Meta viewport agar tampilan responsif di HP -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perkenalan Diri - Belajar HTML</title>
-    <!-- Menghubungkan HTML dengan file CSS terpisah -->
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Halaman perkenalan Asykarim — siswa SMK jurusan Rekayasa Perangkat Lunak.">
+  <meta name="author" content="Muhammad Asykarim">
+  <title>Muhammad Asykarim — Perkenalan</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-    <!-- Kontainer utama halaman -->
-    <main class="container">
+<body id="atas">
 
-        <!-- Bagian header / judul -->
-        <header class="profile-card">
-            <h1>Halo! Saya Asykarim 👋</h1>
-            <p class="subtitle">Siswa yang sedang belajar membuat website</p>
-        </header>
+  <!-- Navigasi utama: <nav> untuk kumpulan tautan antar bagian -->
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="#atas">Asykarim</a>
+      <nav aria-label="Navigasi utama">
+        <ul class="menu">
+          <li><a href="#tentang">Tentang</a></li>
+          <li><a href="#keahlian">Keahlian</a></li>
+          <li><a href="#projek">Projek</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-        <!-- Bagian profil -->
-        <section class="info-section">
-            <h2>Tentang Saya</h2>
-            <p>
-                Nama lengkap saya <strong>Muhammad Asykarim</strong>.
-                Saya tinggal di <em>Indonesia</em> dan saat ini
-                sedang mempelajari dasar-dasar <strong>HTML</strong>,
-                <strong>CSS</strong>, dan <strong>JavaScript</strong>.
-            </p>
+  <main class="wrap">
 
-            <h2>Hobi</h2>
-            <!-- List tidak berurut (unordered list) -->
-            <ul>
-                <li>Membaca buku</li>
-                <li>Olahraga</li>
-                <li>Belajar coding</li>
-            </ul>
+    <!-- Intro: perkenalan singkat. <abbr> menampilkan kepanjangan saat dihover -->
+    <section id="tentang" class="intro" aria-labelledby="judul-tentang">
+      <h1 id="judul-tentang">Muhammad Asykarim</h1>
+      <p class="tagline">Siswa <abbr title="Rekayasa Perangkat Lunak">RPL</abbr> · Belajar web dari dasar</p>
+      <p>
+        Saya menulis halaman ini tanpa framework — hanya HTML, CSS, dan
+        JavaScript murni. Setiap tag yang dipakai di sini dijelaskan satu
+        per satu di file <code>belajar-html.md</code>, jadi halaman ini
+        sekaligus menjadi bahan belajar.
+      </p>
+      <dl class="identitas">
+        <dt>Sekolah</dt>
+        <dd>SMK Negeri — Jurusan RPL</dd>
+        <dt>Kelas</dt>
+        <dd>XII RPL 1</dd>
+        <dt>Lokasi</dt>
+        <dd>Indonesia</dd>
+      </dl>
+    </section>
 
-            <h2>Data Diri</h2>
-            <!-- Tabel sederhana -->
-            <table>
-                <tr>
-                    <th>Nama</th>
-                    <td>Asykarim</td>
-                </tr>
-                <tr>
-                    <th>Kelas</th>
-                    <td>XII RPL 1</td>
-                </tr>
-                <tr>
-                    <th>Sekolah</th>
-                    <td>SMA / SMK</td>
-                </tr>
-            </table>
+    <!-- Keahlian: pakai <progress> (HTML asli) untuk level, bukan gambar/grafik -->
+    <section id="keahlian" class="nomor" aria-labelledby="judul-keahlian">
+      <h2 id="judul-keahlian">01 — Keahlian</h2>
+      <table class="skill">
+        <caption class="sr-only">Daftar keahlian beserta tingkat penguasaan</caption>
+        <tbody>
+          <tr>
+            <th scope="row">HTML</th>
+            <td><progress value="85" max="100">85%</progress></td>
+          </tr>
+          <tr>
+            <th scope="row">CSS</th>
+            <td><progress value="70" max="100">70%</progress></td>
+          </tr>
+          <tr>
+            <th scope="row">JavaScript</th>
+            <td><progress value="55" max="100">55%</progress></td>
+          </tr>
+          <tr>
+            <th scope="row">PHP dasar</th>
+            <td><progress value="40" max="100">40%</progress></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-            <h2>Kontak</h2>
-            <!-- Link ke email -->
-            <p>
-                Email:
-                <a href="mailto:asykarim@example.com">asykarim@example.com</a>
-            </p>
-        </section>
+    <!-- Projek: <article> untuk tiap item yang berdiri sendiri -->
+    <section id="projek" class="nomor" aria-labelledby="judul-projek">
+      <h2 id="judul-projek">02 — Projek</h2>
+      <article class="card">
+        <h3>Katalog Perpustakaan</h3>
+        <p class="meta"><time datetime="2026">2026</time> · PHP + MySQL</p>
+        <p>Aplikasi peminjaman buku untuk sekolah. CRUD lengkap dengan
+           validasi form di sisi server.</p>
+      </article>
+      <article class="card">
+        <h3>Manajer Tugas Harian</h3>
+        <p class="meta"><time datetime="2025">2025</time> · JavaScript + LocalStorage</p>
+        <p>To-do list tanpa backend. Data tersimpan di browser, bisa
+           ditandai selesai dan diurut berdasarkan tanggal.</p>
+      </article>
+      <article class="card">
+        <h3>Situs Profil Ini</h3>
+        <p class="meta"><time datetime="2026">2026</time> · HTML + CSS</p>
+        <p>Satu halaman, tiga berkas terpisah, nol dependensi. Dibuat
+           sebagai materi belajar untuk teman sekelas.</p>
+      </article>
+    </section>
 
-        <!-- Bagian footer -->
-        <footer>
-            <p>&copy; 2026 Asykarim &mdash; Website Pembelajaran HTML</p>
-            <small>
-                Lihat file <code>belajar-html.md</code> untuk penjelasan
-                setiap bagian kode di halaman ini.
-            </small>
-        </footer>
-    </main>
+    <!-- Kontak: form mailto sederhana, tanpa backend -->
+    <section id="kontak" class="nomor" aria-labelledby="judul-kontak">
+      <h2 id="judul-kontak">03 — Kontak</h2>
+      <form action="mailto:asykarim@example.com" method="post" enctype="text/plain">
+        <label for="nama-form">Nama</label>
+        <input type="text" id="nama-form" name="nama" required>
 
-    <!-- Menghubungkan HTML dengan file JavaScript terpisah -->
-    <script src="js/script.js"></script>
+        <label for="pesan">Pesan</label>
+        <textarea id="pesan" name="pesan" rows="4" required></textarea>
+
+        <button type="submit">Kirim lewat email</button>
+      </form>
+      <p class="catatan">Atau langsung: <a href="mailto:asykarim@example.com">asykarim@example.com</a></p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap bar">
+      <p>&copy; <span id="tahun">2026</span> Muhammad Asykarim</p>
+      <p><a href="#atas">Kembali ke atas ↑</a></p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
 </body>
 
 </html>
