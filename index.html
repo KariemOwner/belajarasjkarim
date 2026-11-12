@@ -1,129 +1,366 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description"
-        content="Halaman perkenalan Asykarim — siswa SMK jurusan Rekayasa Perangkat Lunak.">
-  <meta name="author" content="Muhammad Asykarim">
-  <title>Muhammad Asykarim — Perkenalan</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="theme-color" content="#102b24">
+  <meta name="description" content="Kenali SMK Karya Guna 2 Bekasi, sekolah menengah kejuruan swasta di Bekasi Timur dengan program keahlian TKJ, AKL, dan MPLB.">
+  <title>SMK Karya Guna 2 Bekasi — Tumbuh, Terampil, Siap Melangkah</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --green: #12392e;
+      --green-deep: #0c2b23;
+      --green-soft: #e8f0e9;
+      --lime: #d7f36a;
+      --paper: #f7f7f1;
+      --white: #fff;
+      --ink: #17231e;
+      --muted: #64716a;
+      --line: #e1e6df;
+      --shadow: 0 24px 70px rgba(18, 57, 46, .10);
+      --radius: 22px;
+      --max: 1160px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #8da923; outline-offset: 4px; }
+    .container { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .skip-link { position: absolute; top: -60px; left: 16px; z-index: 20; padding: 10px 14px; background: var(--lime); color: var(--green-deep); border-radius: 8px; font-weight: 700; }
+    .skip-link:focus { top: 12px; }
+    .site-header { position: sticky; top: 0; z-index: 10; background: rgba(247, 247, 241, .93); border-bottom: 1px solid rgba(18, 57, 46, .08); backdrop-filter: blur(14px); }
+    .nav-wrap { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; color: var(--green); font-weight: 800; letter-spacing: -.04em; }
+    .brand-mark { width: 40px; height: 40px; display: grid; place-items: center; background: var(--green); color: var(--lime); border-radius: 13px; font-size: 15px; letter-spacing: -.06em; }
+    .brand-text { display: grid; line-height: 1.2; }
+    .brand-text small { margin-top: 4px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 30px; margin: 0; padding: 0; list-style: none; }
+    .nav-links a { color: #435149; text-decoration: none; font-size: 13px; font-weight: 650; transition: color .2s ease; }
+    .nav-links a:hover { color: #73951c; }
+    .nav-links .nav-cta { padding: 11px 17px; color: var(--white); background: var(--green); border-radius: 999px; }
+    .nav-links .nav-cta:hover { color: var(--green-deep); background: var(--lime); }
+    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px; color: var(--green); background: var(--white); cursor: pointer; }
+    .hero { position: relative; overflow: hidden; padding: 88px 0 76px; background: var(--green-deep); color: var(--white); }
+    .hero::before, .hero::after { position: absolute; content: ""; border: 1px solid rgba(215, 243, 106, .14); border-radius: 50%; pointer-events: none; }
+    .hero::before { width: 680px; height: 680px; right: -180px; top: -310px; }
+    .hero::after { width: 470px; height: 470px; right: -75px; top: -205px; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 60px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--lime); font-size: 11px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .eyebrow::before { width: 24px; height: 1px; background: currentColor; content: ""; }
+    h1 { max-width: 700px; margin: 21px 0 20px; font-size: clamp(42px, 6vw, 72px); font-weight: 750; line-height: 1.04; letter-spacing: -.065em; }
+    h1 span { color: var(--lime); }
+    .hero-copy { max-width: 540px; margin: 0; color: #d3ded7; font-size: 17px; line-height: 1.8; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 13px; margin-top: 32px; }
+    .button { min-height: 49px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 0 19px; border: 1px solid transparent; border-radius: 999px; text-decoration: none; font-size: 13px; font-weight: 750; transition: transform .2s ease, background .2s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--lime); color: var(--green-deep); }
+    .button-secondary { border-color: rgba(255,255,255,.28); color: var(--white); }
+    .button-secondary:hover { background: rgba(255,255,255,.08); }
+    .hero-note { display: flex; align-items: center; gap: 9px; margin-top: 24px; color: #bdccc3; font-size: 12px; }
+    .hero-note svg { flex: 0 0 auto; color: var(--lime); }
+    .hero-art { position: relative; min-height: 370px; display: grid; place-items: center; }
+    .art-orbit { position: absolute; width: min(100%, 400px); aspect-ratio: 1; border: 1px solid rgba(215,243,106,.22); border-radius: 50%; }
+    .art-orbit::before, .art-orbit::after { position: absolute; content: ""; border-radius: 50%; background: var(--lime); }
+    .art-orbit::before { width: 9px; height: 9px; top: 16%; right: 14%; }
+    .art-orbit::after { width: 6px; height: 6px; bottom: 17%; left: 13%; opacity: .7; }
+    .art-card { position: relative; width: min(100%, 350px); min-height: 300px; padding: 27px; overflow: hidden; border: 1px solid rgba(255,255,255,.14); border-radius: 28px; background: linear-gradient(145deg, #275343, #173b30 62%, #102e25); box-shadow: 0 30px 90px rgba(0,0,0,.24); transform: rotate(3deg); }
+    .art-card::after { position: absolute; width: 190px; height: 190px; content: ""; right: -66px; bottom: -78px; border: 1px solid rgba(215,243,106,.25); border-radius: 50%; box-shadow: 0 0 0 20px rgba(215,243,106,.035), 0 0 0 42px rgba(215,243,106,.025); }
+    .art-top { display: flex; justify-content: space-between; align-items: center; color: #c6d5cc; font-size: 10px; font-weight: 750; letter-spacing: .13em; text-transform: uppercase; }
+    .art-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; color: var(--green-deep); background: var(--lime); }
+    .art-title { margin: 48px 0 4px; color: var(--lime); font-size: 12px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+    .art-card h2 { max-width: 255px; margin: 0; color: var(--white); font-size: 35px; line-height: 1.13; letter-spacing: -.055em; }
+    .art-bottom { position: absolute; z-index: 1; right: 26px; bottom: 24px; left: 27px; display: flex; justify-content: space-between; align-items: end; color: #cfdbd3; font-size: 11px; }
+    .art-bottom strong { color: var(--lime); font-size: 22px; letter-spacing: -.04em; }
+    .facts { position: relative; z-index: 2; margin-top: -1px; background: var(--white); }
+    .fact-grid { display: grid; grid-template-columns: repeat(3, 1fr); padding: 27px 0; }
+    .fact { display: flex; align-items: center; gap: 14px; padding: 5px 25px; border-right: 1px solid var(--line); }
+    .fact:first-child { padding-left: 0; }
+    .fact:last-child { border: 0; }
+    .fact-icon { width: 42px; height: 42px; flex: 0 0 auto; display: grid; place-items: center; color: var(--green); background: var(--green-soft); border-radius: 14px; }
+    .fact strong, .fact span { display: block; }
+    .fact strong { color: var(--green); font-size: 14px; }
+    .fact span { margin-top: 2px; color: var(--muted); font-size: 11px; }
+    section.content-section { padding: 94px 0; }
+    .section-heading { max-width: 670px; margin-bottom: 38px; }
+    .section-kicker { color: #77951c; font-size: 11px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .section-heading h2 { margin: 10px 0 12px; color: var(--green); font-size: clamp(32px, 4vw, 48px); line-height: 1.12; letter-spacing: -.055em; }
+    .section-heading p { max-width: 580px; margin: 0; color: var(--muted); font-size: 15px; }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 76px; align-items: start; }
+    .about-aside { padding: 28px; border-radius: var(--radius); background: var(--green); color: var(--white); box-shadow: var(--shadow); }
+    .about-aside .label { color: var(--lime); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .about-aside blockquote { margin: 17px 0 19px; font-size: 23px; font-weight: 650; line-height: 1.4; letter-spacing: -.035em; }
+    .about-aside p { margin: 0; color: #c8d6ce; font-size: 13px; }
+    .about-copy h3 { margin: 0 0 13px; color: var(--green); font-size: 22px; letter-spacing: -.035em; }
+    .about-copy > p { margin: 0; color: var(--muted); font-size: 15px; }
+    .detail-list { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 22px; margin: 27px 0 0; padding: 0; list-style: none; }
+    .detail-list li { padding-top: 14px; border-top: 1px solid var(--line); }
+    .detail-list span { display: block; color: var(--muted); font-size: 11px; }
+    .detail-list strong { display: block; margin-top: 4px; color: var(--green); font-size: 13px; }
+    .programs { background: #eef1e8; }
+    .program-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .program-card { position: relative; min-height: 255px; padding: 26px; overflow: hidden; border: 1px solid rgba(18,57,46,.08); border-radius: var(--radius); background: var(--white); transition: transform .25s ease, box-shadow .25s ease; }
+    .program-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .program-number { position: absolute; top: 15px; right: 20px; color: #e7ece5; font-size: 44px; font-weight: 800; letter-spacing: -.07em; }
+    .program-icon { width: 48px; height: 48px; display: grid; place-items: center; color: var(--green); background: var(--green-soft); border-radius: 15px; }
+    .program-card h3 { margin: 27px 0 8px; color: var(--green); font-size: 20px; letter-spacing: -.04em; }
+    .program-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.75; }
+    .program-note { margin: 20px 0 0; color: var(--muted); font-size: 12px; }
+    .campus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .campus-card { display: flex; align-items: flex-start; gap: 17px; padding: 23px; border: 1px solid var(--line); border-radius: 18px; background: var(--white); }
+    .campus-card .program-icon { width: 44px; height: 44px; flex-shrink: 0; }
+    .campus-card h3 { margin: 0 0 4px; color: var(--green); font-size: 15px; }
+    .campus-card p { margin: 0; color: var(--muted); font-size: 12px; }
+    .contact-section { padding: 0 0 92px !important; }
+    .contact-panel { display: grid; grid-template-columns: 1fr .85fr; gap: 50px; padding: 48px; border-radius: 28px; background: var(--green-deep); color: var(--white); }
+    .contact-panel .section-kicker { color: var(--lime); }
+    .contact-panel h2 { max-width: 450px; margin: 10px 0 12px; font-size: clamp(31px, 4vw, 46px); line-height: 1.12; letter-spacing: -.055em; }
+    .contact-panel .contact-intro { max-width: 470px; margin: 0; color: #cbd8d0; font-size: 14px; }
+    .contact-links { display: grid; gap: 13px; align-content: center; }
+    .contact-item { display: flex; align-items: flex-start; gap: 13px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.13); text-decoration: none; }
+    .contact-item:last-child { border: 0; }
+    .contact-item svg { flex: 0 0 auto; margin-top: 2px; color: var(--lime); }
+    .contact-item span { color: #cbd8d0; font-size: 11px; }
+    .contact-item strong { display: block; color: var(--white); font-size: 13px; font-weight: 650; overflow-wrap: anywhere; }
+    .footer { padding: 24px 0; border-top: 1px solid var(--line); }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer p { margin: 0; color: var(--muted); font-size: 11px; }
+    .footer a { color: var(--green); font-weight: 700; text-decoration: none; }
+    .footer-links { display: flex; gap: 20px; }
+    .source-note { margin-top: 10px !important; font-size: 10px !important; }
+    @media (max-width: 820px) {
+      .container { width: min(var(--max), calc(100% - 36px)); }
+      .nav-links { gap: 18px; }
+      .hero { padding: 68px 0 57px; }
+      .hero-grid { grid-template-columns: 1fr .8fr; gap: 20px; }
+      .hero-art { min-height: 330px; }
+      .art-card { min-height: 270px; padding: 22px; }
+      .art-card h2 { font-size: 30px; }
+      .fact { padding-inline: 16px; }
+      section.content-section { padding: 75px 0; }
+      .about-grid { gap: 35px; }
+      .contact-panel { padding: 36px; gap: 28px; }
+    }
+    @media (max-width: 640px) {
+      html { scroll-padding-top: 74px; }
+      .container { width: calc(100% - 36px); }
+      .nav-wrap { min-height: 68px; }
+      .menu-toggle { display: grid; place-items: center; }
+      .nav-links { position: absolute; top: calc(100% + 1px); right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 18px 16px; background: var(--paper); border-bottom: 1px solid var(--line); box-shadow: 0 16px 25px rgba(18,57,46,.07); }
+      .nav-links.is-open { display: flex; flex-direction: column; }
+      .nav-links li { padding: 0; }
+      .nav-links a { display: block; padding: 12px 4px; }
+      .nav-links .nav-cta { margin-top: 5px; padding: 11px 15px; text-align: center; }
+      .hero { padding: 56px 0 43px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 18px; }
+      h1 { max-width: 500px; font-size: clamp(43px, 13vw, 62px); }
+      .hero-copy { font-size: 15px; }
+      .hero-art { min-height: 290px; margin-top: 4px; }
+      .art-orbit { width: 290px; }
+      .art-card { width: min(85%, 330px); min-height: 245px; }
+      .art-title { margin-top: 36px; }
+      .fact-grid { grid-template-columns: 1fr; padding: 8px 0; }
+      .fact { padding: 14px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .fact:last-child { border: 0; }
+      section.content-section { padding: 66px 0; }
+      .section-heading { margin-bottom: 27px; }
+      .section-heading h2 { font-size: 36px; }
+      .about-grid { grid-template-columns: 1fr; gap: 25px; }
+      .about-aside { padding: 24px; }
+      .detail-list { gap: 15px; }
+      .program-grid { grid-template-columns: 1fr; gap: 12px; }
+      .program-card { min-height: auto; padding: 22px; }
+      .program-card h3 { margin-top: 21px; }
+      .campus-grid { grid-template-columns: 1fr; gap: 11px; }
+      .campus-card { padding: 18px; }
+      .contact-section { padding-bottom: 62px !important; }
+      .contact-panel { grid-template-columns: 1fr; gap: 22px; padding: 28px 23px; border-radius: 22px; }
+      .contact-panel h2 { font-size: 36px; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
 </head>
-
 <body id="atas">
-
-  <!-- Navigasi utama: <nav> untuk kumpulan tautan antar bagian -->
+  <a class="skip-link" href="#konten">Langsung ke konten</a>
   <header class="site-header">
-    <div class="wrap bar">
-      <a class="brand" href="#atas">Asykarim</a>
+    <div class="container nav-wrap">
+      <a class="brand" href="#atas" aria-label="SMK Karya Guna 2 Bekasi, kembali ke halaman utama">
+        <span class="brand-mark" aria-hidden="true">KG2</span>
+        <span class="brand-text">Karya Guna 2<small>Bekasi Timur</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Buka navigasi" aria-expanded="false" aria-controls="menu-utama">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
       <nav aria-label="Navigasi utama">
-        <ul class="menu">
-          <li><a href="#tentang">Tentang</a></li>
-          <li><a href="#keahlian">Keahlian</a></li>
-          <li><a href="#projek">Projek</a></li>
-          <li><a href="#kontak">Kontak</a></li>
+        <ul class="nav-links" id="menu-utama">
+          <li><a href="#profil">Profil</a></li>
+          <li><a href="#program">Program keahlian</a></li>
+          <li><a href="#fasilitas">Fasilitas</a></li>
+          <li><a class="nav-cta" href="#kontak">Hubungi sekolah <span aria-hidden="true">↗</span></a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="wrap">
-
-    <!-- Intro: perkenalan singkat. <abbr> menampilkan kepanjangan saat dihover -->
-    <section id="tentang" class="intro" aria-labelledby="judul-tentang">
-      <h1 id="judul-tentang">Muhammad Asykarim</h1>
-      <p class="tagline">Siswa <abbr title="Rekayasa Perangkat Lunak">RPL</abbr> · Belajar web dari dasar</p>
-      <p>
-        Saya menulis halaman ini tanpa framework — hanya HTML, CSS, dan
-        JavaScript murni. Setiap tag yang dipakai di sini dijelaskan satu
-        per satu di file <code>belajar-html.md</code>, jadi halaman ini
-        sekaligus menjadi bahan belajar.
-      </p>
-      <dl class="identitas">
-        <dt>Sekolah</dt>
-        <dd>SMK Negeri — Jurusan RPL</dd>
-        <dt>Kelas</dt>
-        <dd>XII RPL 1</dd>
-        <dt>Lokasi</dt>
-        <dd>Indonesia</dd>
-      </dl>
+  <main id="konten">
+    <section class="hero" aria-labelledby="judul-utama">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">SMK Karya Guna 2 Bekasi</span>
+          <h1>Bekal keterampilan untuk <span>langkah lebih jauh.</span></h1>
+          <p class="hero-copy">Temukan lingkungan belajar kejuruan yang membantu siswa mengenali potensi, membangun keterampilan, dan mempersiapkan diri untuk masa depan.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#program">Jelajahi program <span aria-hidden="true">↓</span></a>
+            <a class="button button-secondary" href="#kontak">Informasi sekolah <span aria-hidden="true">↗</span></a>
+          </div>
+          <p class="hero-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.3" stroke="currentColor" stroke-width="1.7"/></svg>
+            Berlokasi di Bekasi Timur, Kota Bekasi
+          </p>
+        </div>
+        <div class="hero-art" aria-label="Ilustrasi kartu profil sekolah" role="img">
+          <div class="art-orbit" aria-hidden="true"></div>
+          <div class="art-card">
+            <div class="art-top"><span>Belajar · Berkarya · Bertumbuh</span><span class="art-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M4 19.5V6.8c0-.7.6-1.3 1.3-1.3H19v14H5.3c-.7 0-1.3-.6-1.3-1.3ZM4 17.5c0-1.1.9-2 2-2h13M8 9h7M8 12h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+            <p class="art-title">Ruang untuk berkembang</p>
+            <h2>Belajar hari ini, siap melangkah esok.</h2>
+            <div class="art-bottom"><span>SMK Karya Guna 2<br>Bekasi</span><strong>KG2</strong></div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Keahlian: pakai <progress> (HTML asli) untuk level, bukan gambar/grafik -->
-    <section id="keahlian" class="nomor" aria-labelledby="judul-keahlian">
-      <h2 id="judul-keahlian">01 — Keahlian</h2>
-      <table class="skill">
-        <caption class="sr-only">Daftar keahlian beserta tingkat penguasaan</caption>
-        <tbody>
-          <tr>
-            <th scope="row">HTML</th>
-            <td><progress value="85" max="100">85%</progress></td>
-          </tr>
-          <tr>
-            <th scope="row">CSS</th>
-            <td><progress value="70" max="100">70%</progress></td>
-          </tr>
-          <tr>
-            <th scope="row">JavaScript</th>
-            <td><progress value="55" max="100">55%</progress></td>
-          </tr>
-          <tr>
-            <th scope="row">PHP dasar</th>
-            <td><progress value="40" max="100">40%</progress></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="facts" aria-label="Informasi singkat sekolah">
+      <div class="container fact-grid">
+        <div class="fact"><span class="fact-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3.5 20h17M5 20V8l7-4 7 4v12M9 10h.01M15 10h.01M9 14h.01M15 14h.01M10 20v-3h4v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>SMK swasta</strong><span>SMKS Karya Guna 2 Bekasi</span></div></div>
+        <div class="fact"><span class="fact-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.3" stroke="currentColor" stroke-width="1.7"/></svg></span><div><strong>Bekasi Timur</strong><span>Kota Bekasi, Jawa Barat</span></div></div>
+        <div class="fact"><span class="fact-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span><div><strong>Akreditasi A</strong><span>Data akreditasi tercatat di portal pendidikan</span></div></div>
+      </div>
+    </div>
+
+    <section class="content-section" id="profil" aria-labelledby="judul-profil">
+      <div class="container about-grid">
+        <div>
+          <div class="section-heading">
+            <span class="section-kicker">Kenali sekolah</span>
+            <h2 id="judul-profil">Pendidikan kejuruan, dekat dengan dunia nyata.</h2>
+            <p>Kenali identitas dan pilihan belajar di SMK Karya Guna 2 Bekasi.</p>
+          </div>
+          <div class="about-aside">
+            <span class="label">Fokus pembelajaran</span>
+            <blockquote>“Mengembangkan keterampilan dan pengetahuan sebagai bekal untuk masa depan.”</blockquote>
+            <p>Pesan ini merangkum semangat pendidikan kejuruan—tanpa menggantikan pernyataan visi resmi sekolah.</p>
+          </div>
+        </div>
+        <div class="about-copy">
+          <h3>Sekolah menengah kejuruan di Bekasi Timur</h3>
+          <p>SMK Karya Guna 2 Bekasi merupakan sekolah menengah kejuruan swasta di Kecamatan Bekasi Timur. Sekolah tercatat dengan Nomor Pokok Sekolah Nasional (NPSN) 20223114. Calon siswa dan orang tua dapat menghubungi sekolah untuk memperoleh informasi terbaru mengenai penerimaan dan kegiatan belajar.</p>
+          <ul class="detail-list">
+            <li><span>Nama resmi</span><strong>SMKS Karya Guna 2 Bekasi</strong></li>
+            <li><span>NPSN</span><strong>20223114</strong></li>
+            <li><span>Status</span><strong>Swasta</strong></li>
+            <li><span>Wilayah</span><strong>Bekasi Timur, Kota Bekasi</strong></li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <!-- Projek: <article> untuk tiap item yang berdiri sendiri -->
-    <section id="projek" class="nomor" aria-labelledby="judul-projek">
-      <h2 id="judul-projek">02 — Projek</h2>
-      <article class="card">
-        <h3>Katalog Perpustakaan</h3>
-        <p class="meta"><time datetime="2026">2026</time> · PHP + MySQL</p>
-        <p>Aplikasi peminjaman buku untuk sekolah. CRUD lengkap dengan
-           validasi form di sisi server.</p>
-      </article>
-      <article class="card">
-        <h3>Manajer Tugas Harian</h3>
-        <p class="meta"><time datetime="2025">2025</time> · JavaScript + LocalStorage</p>
-        <p>To-do list tanpa backend. Data tersimpan di browser, bisa
-           ditandai selesai dan diurut berdasarkan tanggal.</p>
-      </article>
-      <article class="card">
-        <h3>Situs Profil Ini</h3>
-        <p class="meta"><time datetime="2026">2026</time> · HTML + CSS</p>
-        <p>Satu halaman, tiga berkas terpisah, nol dependensi. Dibuat
-           sebagai materi belajar untuk teman sekelas.</p>
-      </article>
+    <section class="content-section programs" id="program" aria-labelledby="judul-program">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-kicker">Pilihan program</span>
+          <h2 id="judul-program">Temukan bidang yang sesuai minatmu.</h2>
+          <p>Berikut program keahlian yang tercantum pada profil sekolah. Hubungi sekolah untuk memastikan informasi penerimaan dan ketersediaan terbaru.</p>
+        </div>
+        <div class="program-grid">
+          <article class="program-card">
+            <span class="program-number" aria-hidden="true">01</span>
+            <span class="program-icon" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 21h8m-4-4v4m-5-9 3-3 2 2 3-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <h3>Teknik Komputer dan Jaringan</h3>
+            <p>TKJ — bidang keahlian teknologi komputer dan jaringan.</p>
+          </article>
+          <article class="program-card">
+            <span class="program-number" aria-hidden="true">02</span>
+            <span class="program-icon" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 7h8M8 11h2m4 0h2m-8 4h2m4 0h2m-8 4h2m4 0h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+            <h3>Akuntansi dan Keuangan Lembaga</h3>
+            <p>AKL — bidang keahlian akuntansi dan pengelolaan keuangan.</p>
+          </article>
+          <article class="program-card">
+            <span class="program-number" aria-hidden="true">03</span>
+            <span class="program-icon" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="15" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 5V3h8v2M7 10h10M8 14h3m2 0h3m-8 3h3m2 0h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+            <h3>Manajemen Perkantoran dan Layanan Bisnis</h3>
+            <p>MPLB — bidang keahlian manajemen perkantoran dan layanan bisnis.</p>
+          </article>
+        </div>
+        <p class="program-note">Nama program mengikuti data profil pendidikan yang tersedia. Konfirmasi langsung ke sekolah untuk informasi kurikulum atau penerimaan terkini.</p>
+      </div>
     </section>
 
-    <!-- Kontak: form mailto sederhana, tanpa backend -->
-    <section id="kontak" class="nomor" aria-labelledby="judul-kontak">
-      <h2 id="judul-kontak">03 — Kontak</h2>
-      <form action="mailto:asykarim@example.com" method="post" enctype="text/plain">
-        <label for="nama-form">Nama</label>
-        <input type="text" id="nama-form" name="nama" required>
-
-        <label for="pesan">Pesan</label>
-        <textarea id="pesan" name="pesan" rows="4" required></textarea>
-
-        <button type="submit">Kirim lewat email</button>
-      </form>
-      <p class="catatan">Atau langsung: <a href="mailto:asykarim@example.com">asykarim@example.com</a></p>
+    <section class="content-section" id="fasilitas" aria-labelledby="judul-fasilitas">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-kicker">Lingkungan belajar</span>
+          <h2 id="judul-fasilitas">Fasilitas untuk mendukung kegiatan belajar.</h2>
+          <p>Data pendidikan yang tersedia mencatat sarana dasar pembelajaran berikut.</p>
+        </div>
+        <div class="campus-grid">
+          <article class="campus-card"><span class="program-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M3 20h18M5 20V8l7-4 7 4v12M9 10h.01M15 10h.01M9 14h.01M15 14h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Ruang kelas</h3><p>Ruang untuk kegiatan pembelajaran di sekolah.</p></div></article>
+          <article class="campus-card"><span class="program-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 21h8m-4-4v4m-5-9 3-3 2 2 3-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Laboratorium komputer</h3><p>Sarana pendukung pembelajaran bidang komputer.</p></div></article>
+          <article class="campus-card"><span class="program-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M4 19.5V6.8c0-.7.6-1.3 1.3-1.3H19v14H5.3c-.7 0-1.3-.6-1.3-1.3ZM4 17.5c0-1.1.9-2 2-2h13M8 9h7M8 12h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Perpustakaan</h3><p>Sarana literasi dan sumber belajar siswa.</p></div></article>
+          <article class="campus-card"><span class="program-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M4 6.5 12 3l8 3.5v5c0 4.4-3.1 7.7-8 9.5-4.9-1.8-8-5.1-8-9.5v-5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Lingkungan sekolah</h3><p>Untuk informasi sarana dan layanan lainnya, silakan menghubungi sekolah.</p></div></article>
+        </div>
+      </div>
     </section>
 
+    <section class="content-section contact-section" id="kontak" aria-labelledby="judul-kontak">
+      <div class="container contact-panel">
+        <div>
+          <span class="section-kicker">Kontak sekolah</span>
+          <h2 id="judul-kontak">Ingin tahu lebih lanjut?</h2>
+          <p class="contact-intro">Hubungi SMK Karya Guna 2 Bekasi untuk informasi resmi mengenai program keahlian, pendaftaran, dan kegiatan sekolah.</p>
+          <a class="button button-primary" style="margin-top:24px" href="https://smkkg2.sch.id/" target="_blank" rel="noopener noreferrer">Kunjungi situs sekolah <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="contact-links">
+          <a class="contact-item" href="https://maps.google.com/?q=SMK+Karya+Guna+2+Bekasi" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.3" stroke="currentColor" stroke-width="1.7"/></svg><span>Alamat<strong>Jl. Karang Satria RT.10/16, Duren Jaya, Bekasi Timur, Kota Bekasi, Jawa Barat 17111</strong></span></a>
+          <a class="contact-item" href="tel:+62218800523"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3H5a2 2 0 0 0-2 2c0 8.8 7.2 16 16 16a2 2 0 0 0 2-2v-2l-5-2-2 3a14 14 0 0 1-6-6l3-2-2-5Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Telepon<strong>(021) 8800523</strong></span></a>
+          <a class="contact-item" href="mailto:info@smkkaryaguna2bekasi.sch.id"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Email<strong>info@smkkaryaguna2bekasi.sch.id</strong></span></a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap bar">
-      <p>&copy; <span id="tahun">2026</span> Muhammad Asykarim</p>
-      <p><a href="#atas">Kembali ke atas ↑</a></p>
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>
+        <p>© <span id="tahun">2026</span> SMK Karya Guna 2 Bekasi</p>
+        <p class="source-note">Informasi dirangkum dari situs sekolah dan portal data pendidikan; detail dapat berubah. Silakan konfirmasi langsung kepada sekolah.</p>
+      </div>
+      <div class="footer-links"><a href="#atas">Kembali ke atas ↑</a><a href="https://smkkg2.sch.id/" target="_blank" rel="noopener noreferrer">Situs resmi ↗</a></div>
     </div>
   </footer>
-
-  <script src="js/script.js"></script>
+  <script>
+    (() => {
+      const toggle = document.querySelector('.menu-toggle');
+      const menu = document.getElementById('menu-utama');
+      const year = document.getElementById('tahun');
+      if (year) year.textContent = new Date().getFullYear();
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Buka navigasi' : 'Tutup navigasi');
+        menu.classList.toggle('is-open', !expanded);
+      });
+      menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Buka navigasi');
+      }));
+    })();
+  </script>
 </body>
-
 </html>
