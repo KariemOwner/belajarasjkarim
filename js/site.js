@@ -6,32 +6,37 @@
   if (year) year.textContent = new Date().getFullYear();
   if (!toggle || !menu) return;
 
-  const closeMenu = () => {
+  const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
+  const closeMenu = ({ returnFocus = false } = {}) => {
+    if (!isOpen()) return;
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Buka navigasi');
     menu.classList.remove('is-open');
+    if (returnFocus) toggle.focus();
   };
 
   toggle.addEventListener('click', () => {
-    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!isOpen));
-    toggle.setAttribute('aria-label', isOpen ? 'Buka navigasi' : 'Tutup navigasi');
-    menu.classList.toggle('is-open', !isOpen);
+    const opening = !isOpen();
+    toggle.setAttribute('aria-expanded', String(opening));
+    toggle.setAttribute('aria-label', opening ? 'Tutup navigasi' : 'Buka navigasi');
+    menu.classList.toggle('is-open', opening);
   });
 
   menu.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener('click', closeMenu);
+    link.addEventListener('click', () => closeMenu());
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      closeMenu();
-      toggle.focus();
-    }
+    if (event.key === 'Escape') closeMenu({ returnFocus: true });
   });
 
   document.addEventListener('click', (event) => {
     if (!menu.contains(event.target) && !toggle.contains(event.target)) closeMenu();
+  });
+
+  const desktopNav = window.matchMedia('(min-width: 561px)');
+  desktopNav.addEventListener('change', (event) => {
+    if (event.matches) closeMenu();
   });
 
   const links = [...menu.querySelectorAll('a[href^="#"]')];
